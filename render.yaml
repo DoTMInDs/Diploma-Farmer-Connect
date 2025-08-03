@@ -1,0 +1,40 @@
+services:
+  - type: web
+    name: dipbackend
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn dipbackend.wsgi:application
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: DEBUG
+        value: false
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALLOWED_HOSTS
+        value: your-backend-app.onrender.com
+      - key: DB_NAME
+        fromDatabase:
+          name: dipbackend-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: dipbackend-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: dipbackend-db
+          property: password
+      - key: DB_HOST
+        fromDatabase:
+          name: dipbackend-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: dipbackend-db
+          property: port
+
+databases:
+  - name: dipbackend-db
+    databaseName: dipbackend
+    user: dipbackend 
