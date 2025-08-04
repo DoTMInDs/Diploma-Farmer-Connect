@@ -21,3 +21,9 @@ dist/
 *.iml
 *.vscode-test
 .venv
+media/
+staticfiles/
+.env
+.env.local
+.env.development.local
+.env.test.local
