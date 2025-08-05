@@ -176,14 +176,15 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5173",
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "https://frontend-64wo.onrender.com",  
+      
 ]
 
 # Add your frontend domain here
-# if not DEBUG:
-#     CORS_ALLOWED_ORIGINS = [
-#         "https://diploma-farmer-connect.onrender.com",  # Replace with your actual frontend URL
-#     ]
+if not DEBUG:
+    CORS_ALLOWED_ORIGINS = [
+        "https://frontend-64wo.onrender.com", 
+        "https://diploma-farmer-connect.onrender.com",
+    ]
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_ALL_HEADERS = True
