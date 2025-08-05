@@ -14,6 +14,10 @@ from pathlib import Path
 import os
 from decouple import config
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,13 +26,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY', default='django-insecure-#kz(-5m4yt8im_itt!p#o)fw2_o()0j$6^*m0tq6mcdvz9i&5w')
+# SECRET_KEY = config('SECRET_KEY', default='django-insecure-#kz(-5m4yt8im_itt!p#o)fw2_o()0j$6^*m0tq6mcdvz9i&5w')
+
+SECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-#kz(-5m4yt8im_itt!p#o)fw2_o()0j$6^*m0tq6mcdvz9i&5w")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=True, cast=bool)
+DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1,0.0.0.0', cast=lambda v: [s.strip() for s in v.split(',')])
-
+# ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1,0.0.0.0', cast=lambda v: [s.strip() for s in v.split(',')])
+ALLOWED_HOSTS = [host.strip() for host in os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,[::1],diploma-farmer-connect.onrender.com').split(',')]
 
 # Application definition
 
