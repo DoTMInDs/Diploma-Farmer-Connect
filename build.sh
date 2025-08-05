@@ -4,8 +4,8 @@ set -o errexit
 
 # pip install -r requirements.txt
 
-python dipbackend/manage.py collectstatic --no-input
+python Diploma-Farmer-Connect/manage.py collectstatic --no-input
 
-python dipbackend/manage.py migrate 
+python Diploma-Farmer-Connect/manage.py migrate 
 
-python dipbackend/manage.py runserver 0.0.0.0:$PORT
+python Diploma-Farmer-Connect/manage.py runserver 0.0.0.0:$PORT
