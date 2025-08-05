@@ -176,6 +176,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5173",
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+    "https://frontend-64wo.onrender.com",  
 ]
 
 # Add your frontend domain here
@@ -185,6 +186,7 @@ if not DEBUG:
     ]
 
 CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_HEADERS = True
 
 # For development, allow all origins (remove in production)
 if DEBUG:
