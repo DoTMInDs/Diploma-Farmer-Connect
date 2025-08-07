@@ -12,7 +12,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
-from decouple import config
+# from decouple import config
+import cloudinary,cloudinary_storage # type: ignore
 
 from dotenv import load_dotenv
 
@@ -48,6 +49,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'backend',
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -215,6 +218,13 @@ CORS_ALLOW_HEADERS = [
 ]
 
 SECURE_SSL_REDIRECT = False
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET')
+}
 
 # Security settings for production
 # if not DEBUG:
